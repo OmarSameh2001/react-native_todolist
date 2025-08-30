@@ -1,50 +1,66 @@
-# Welcome to your Expo app 👋
+# 📋 React Native Task Manager (TypeScript)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple Task Manager app built with React Native + TypeScript.
+Users can add tasks, mark them as complete/incomplete, and delete tasks with confirmation.
+The app provides toast notifications for smooth feedback and uses a modular folder structure for clarity.
 
-## Get started
+## ✨ Features
 
-1. Install dependencies
+➕ Add Task – create a new task with a title
 
-   ```bash
-   npm install
-   ```
+✅ Mark Complete/Incomplete – toggle task status with a tap
 
-2. Start the app
+❌ Delete Task – confirm before deletion
 
-   ```bash
-   npx expo start
-   ```
+🔔 Toast Notifications – instant feedback for add/update/delete actions
 
-In the output, you'll find options to open the app in a
+🗂️ Modular Structure – separate components, and utilities
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+⚡ Local State Management – lightweight and fast (no DB required or global context)
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 📂 Project Structure
+App.tsx
+app/
+  └── (tabs)
+         └── index.tsx
+components/
+  ├── AddTask.tsx
+  └── ViewTask.tsx
+hooks/
+  └── useTaskDb.ts
+README.md
 
-## Get a fresh project
+## 🚀 Getting Started
+1. Clone the repository
 
-When you're ready, run:
+2. Install dependencies
+`npm install`
+ or
+`yarn install`
 
-```bash
-npm run reset-project
-```
+3. Run the app
+`npm start`
+ or
+`expo start`
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+4. Open the app
 
-## Learn more
+   Use Expo Go (iOS/Android) by scanning the QR code, or
 
-To learn more about developing your project with Expo, look at the following resources:
+   Run in an emulator/simulator
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## 📦 Libraries Used
 
-## Join the community
+react-native-toast-message
+ – toast notifications
+expo-checkbox
+ – task completion checkbox
 
-Join our community of developers creating universal apps.
+React Native core components – UI & interaction
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 📌 Notes
+
+Tasks are stored in local state only and manipulated via external ts file that handles all the tasks crud operations no global state as written in the assignment requirements.
+
+The app ui is doing exactly what the app needs the design may be improved as needed in the future.
+
