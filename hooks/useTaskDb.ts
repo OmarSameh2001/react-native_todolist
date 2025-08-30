@@ -1,10 +1,14 @@
 
+// this is a simple in-memory database to manage tasks state
+
+// Type for a task
 export type Task = {
   id: string;
   title: string;
   isCompleted: boolean;
 };
 
+// Function to add a new task it takes a title and a callback to update the state
 export const addTask = (
     title: string,
     setTask: React.Dispatch<React.SetStateAction<Task[]>>
@@ -17,6 +21,7 @@ export const addTask = (
     setTask(prevTasks => [...prevTasks, newTask]);
 };
 
+// Function to toggle the completion status of a task it takes an id and a callback to update the state
 export const toggleTask = (
     id: string,
     setTask: React.Dispatch<React.SetStateAction<Task[]>>
@@ -28,6 +33,7 @@ export const toggleTask = (
     );
 };
 
+// Function to delete a task it takes an id and a callback to update the state
 export const deleteTask = (
     id: string,
     setTask: React.Dispatch<React.SetStateAction<Task[]>>

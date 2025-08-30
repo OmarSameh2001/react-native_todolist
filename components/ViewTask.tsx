@@ -1,4 +1,4 @@
-import Checkbox from 'expo-checkbox';
+import Checkbox from "expo-checkbox";
 import React from "react";
 import {
     Alert,
@@ -6,40 +6,42 @@ import {
     StyleSheet,
     Text,
     useColorScheme,
-    View
+    View,
 } from "react-native";
 import Toast from "react-native-toast-message";
 import { deleteTask, Task, toggleTask } from "../hooks/useTaskDb";
 
-
+// props type
 type Props = {
   task: Task;
   setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
 };
 
-
-
+// component to view a task
 const ViewTask = ({ task, setTasks }: Props) => {
-    
-const colorScheme = useColorScheme();
-const styles = StyleSheet.create({
-  item: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: 10,
-    borderBottomWidth: 1,
-    borderColor: "#ccc",
-  },
-  text: {
-    fontSize: 16,
-    color: colorScheme === "dark" ? "#fff" : "#000",
-  },
-  completed: {
-    textDecorationLine: "line-through",
-    color: "gray",
-  },
-});
+  // dark mode support
+  const colorScheme = useColorScheme();
+  // styles to avoid using inline styles
+  const styles = StyleSheet.create({
+    item: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+      padding: 10,
+      borderBottomWidth: 1,
+      borderColor: "#ccc",
+    },
+    text: {
+      fontSize: 16,
+      color: colorScheme === "dark" ? "#fff" : "#000",
+    },
+    completed: {
+      textDecorationLine: "line-through",
+      color: "gray",
+    },
+  });
+
+  // function to confirm delete a task
   const confirmDelete = () => {
     Alert.alert(
       "Delete Task",
@@ -62,6 +64,7 @@ const styles = StyleSheet.create({
     );
   };
 
+  // function to toggle the completion status of a task
   const handleToggle = () => {
     toggleTask(task.id, setTasks);
     Toast.show({
@@ -69,13 +72,13 @@ const styles = StyleSheet.create({
       text1: "Task updated",
       text2: task.isCompleted ? "Marked incomplete" : "Marked complete",
     });
-  }
+  };
 
   return (
     <View style={styles.item}>
-      <View
-        style={{ flexDirection: "row", alignItems: "center", gap: 10 }}
-      >
+      <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
+        
+        {/* checkbox and task title */}
         <Checkbox
           value={task.isCompleted}
           onValueChange={() => {
@@ -86,11 +89,11 @@ const styles = StyleSheet.create({
           {task.title}
         </Text>
       </View>
+
+      {/* delete button */}
       <Button title="Delete" color="red" onPress={confirmDelete} />
     </View>
   );
 };
-
-
 
 export default ViewTask;
